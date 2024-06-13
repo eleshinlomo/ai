@@ -34,6 +34,20 @@ const Home = () => {
         
         <p className='font-extrabold text-2xl text-red-500'>Tokens</p>
         <p className='font-extrabold text-2xl'>{tokens}</p>
+        
+        {/* API Costing */}
+        <div className='text-center flex gap-3'>
+        <div>
+         <p className='font-semibold'>COST USING 
+         <span className='font-extrabold'> OPENAI</span></p>
+         <p>${0}</p>
+         </div>
+         <div>
+         <p className='font-semibold'>COST USING  
+         <span className='font-extrabold'> GEMINI FLASH 1.5</span></p>
+         <p>${0}</p>
+         </div>
+        </div>
         </div>
        
         
