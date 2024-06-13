@@ -1,7 +1,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import { Button } from "@/components/ui/button"
-import { string } from "zod"
+
 
 export const UserAvatar = ()=>{
     
