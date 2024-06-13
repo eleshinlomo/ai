@@ -5,6 +5,7 @@ import { countTokens } from '@/components/tokencounter'
 import { Textarea } from '@/components/ui/textarea'
 import HomeNavBar from '@/components/homenavbar'
 import Footer from '@/components/footer'
+import { Button } from '@/components/ui/button'
 
 
 const Home = () => {
@@ -12,7 +13,13 @@ const Home = () => {
   const [tokens, setTokens] = useState<number>(0)
 
   const handleTokenCounter = ()=>{
-   const newTokens = countTokens(text)
+
+   let newTokens: number = 0
+   if (text === ''){
+   newTokens = 0
+   }else{
+    newTokens = countTokens(text)
+   }
    setTokens(newTokens)
   }
 
@@ -28,9 +35,15 @@ const Home = () => {
         <h1 className='py-8 text-center text-3xl'>Token Counter</h1>
         <div className='flex flex-col justify-center items-center gap-3'>
         <p className='font-extrabold text-2xl text-blue-500'>Text Area</p>
-        <Textarea onChange={(e)=>setText(e.target.value)} 
+        <Textarea value={text} onChange={(e)=>setText(e.target.value)} 
         placeholder='Type or paste text here'
-        className='h-32 w-1/2 text-md' />
+        className='h-32 w-1/2 text-md p-0 m-0'  />
+
+        <div>
+        <Button 
+        className='bg-blue-500 rounded-2xl text-white hover:bg-blue-500' 
+        onClick={()=>setText('')}>Reset</Button>
+        </div>
         
         <p className='font-extrabold text-2xl text-red-500'>Tokens</p>
         <p className='font-extrabold text-2xl'>{tokens}</p>
