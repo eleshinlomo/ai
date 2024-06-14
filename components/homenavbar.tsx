@@ -92,14 +92,14 @@ const HomeNavBar = ()=>{
 
 
 
-<div className='mr-2 text-white text-black'>
+<div className='mr-2 text-white'>
 <Menubar className=" gap-3">
   <MenubarMenu>
     <MenubarTrigger><Link href='/'>Home</Link></MenubarTrigger>
   </MenubarMenu>
 
   <MenubarMenu>
-    <MenubarTrigger>Services</MenubarTrigger>
+    <MenubarTrigger>AI Tools</MenubarTrigger>
     <MenubarContent className='flex flex-col mr-4'>
       <MenubarItem>
         <OtherHomeNavButtons />

@@ -8,7 +8,7 @@ import Footer from '@/components/footer'
 import { Button } from '@/components/ui/button'
 
 
-const Home = () => {
+const TokenCounterPage = () => {
   const [text, setText] = useState<string>('')
   const [tokens, setTokens] = useState<number>(0)
 
@@ -101,4 +101,4 @@ text on whitespace or other delimiters.</p>
   )
 }
 
-export default Home
+export default TokenCounterPage
