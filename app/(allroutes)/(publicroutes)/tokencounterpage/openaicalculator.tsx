@@ -153,7 +153,7 @@ const OpenaiCalculator = ({tokens, onReset}: OpenaiCalculatorProps) =>{
     <p>Training Data: {trainingData}</p>
     <p>Request Per Minute(RPM): {rpm}</p>
     <p>Prompt is used for model re-training: {retraining}</p>
-    <p className="text-sm text-red-500">Excluding chatGPT & Dall-E free users</p>
+    <p className="text-sm text-red-500">YES for free users</p>
     <Link href='https://openai.com/api/pricing/'>
     <Button className="bg-blue-500 hover:bg-blue-500  rounded-2xl text-white">Source
       
