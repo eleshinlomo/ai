@@ -142,10 +142,10 @@ const OpenaiCalculator = ({tokens, onReset}: OpenaiCalculatorProps) =>{
     
     
     <div>
+    <p className='font-semibold text-sm'>TOTAL COST(input cost + output cost): 
+    <span className='font-extrabold text-2xl text-green-500'> ${(inputCost +  outputCost).toFixed(6)}</span></p>
     <p className='font-semibold'>INPUT COST
-         <span className='font-extrabold text-2xl text-green-500'> ${inputCost}</span></p>
-    <p className='font-semibold'>INPUT COST + OUTPUT COST
-    <span className='font-extrabold text-lg text-green-500'> ${inputCost +  outputCost}</span></p>
+         <span className='font-extrabold text-lg text-green-500'> ${(inputCost).toFixed(6)}</span></p>
     <p className="text-sm">Assuming input tokens and output tokens are thesame.</p>
     <p className="text-red-500">Model Input Price: ${modelInputPriceExplanation}</p>
     <p className="text-red-500">Model Output Price: ${modelOutputPriceExplanation}</p>

@@ -108,6 +108,10 @@ const HomeNavBar = ()=>{
   </MenubarMenu>
 
   <MenubarMenu>
+    <MenubarTrigger><Link href='/'>Token Calculator</Link></MenubarTrigger>
+  </MenubarMenu>
+
+  <MenubarMenu>
     <MenubarTrigger><Link href='/imagecosting'>Compare Image Models</Link></MenubarTrigger>
   </MenubarMenu>
 
