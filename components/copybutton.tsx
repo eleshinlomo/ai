@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { Button } from './ui/button';
+import { Copy } from 'lucide-react';
 
 export interface CopyButtonType {
 textToCopy: string;

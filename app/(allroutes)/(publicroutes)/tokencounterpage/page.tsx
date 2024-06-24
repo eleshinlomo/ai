@@ -10,6 +10,8 @@ import OpenaiCalculator from './openaicalculator'
 import { OpenaiCalculatorProps } from './openaicalculator'
 import GeminiCalculator from './geminicalculator'
 import WordGenerator from '@/components/wordgenerator'
+import ContextExplanation from '@/components/contextexplanation'
+import { tokenExplanationHeader, tokenExplanationText } from '@/components/contextdefinitions'
 
 
 const TokenCounterPage = () => {
@@ -72,36 +74,16 @@ const TokenCounterPage = () => {
         </div>
         </div>
        
-        
 
-<p className='font-extrabold text-2xl'>Explanation</p>
-<div className='font-semibold text-lg flex flex-col gap-3'>
-<p>In the context of natural language processing (NLP) 
- and machine learning (ML), a token is a single unit of text, 
-often a word or a punctuation mark, obtained by splitting the 
-text on whitespace or other delimiters.</p>
 
-<p>Here are a few examples to illustrate what tokens are:</p>
+<p className='text-center font-extrabold text-2xl'>FAQs</p>
+<div className='flex justify-center'>
+<div className='flex gap-2'>
+  <p>What are tokens?</p><ContextExplanation header={tokenExplanationHeader} text={tokenExplanationText} />
+</div>
+</div>
 
-<p>In the sentence {"'The cat is sleeping.'"}, the tokens are:
- {'"The"'}, {'"cat"'}, {'"is"'}, {'"sleeping"'}, and {'"."'}.</p>
 
-<p>In the phrase {" 'MyAfros' language model is powerful!'"}, 
-  the tokens are: {'"MyAfros" '}, {'"language" '}, {'"model" '}, {'"is" '}, 
-{'"powerful" '}, and {' "!"'}.</p>
-
-<p>In the text {'123 Main Street, New York'}, the tokens are:
- {'"123"'}, {'"Main"'}, {'"Street,"'}, {'"New"'}, and {'"York"'}.</p>
-
- <p>
- Whether full stops are counted as tokens depends on the granularity of 
- tokenization and the specific requirements of the NLP or ML task. 
- In many cases, especially in word-level tokenization, 
- full stops are counted as separate tokens because they represent 
- punctuation and can convey 
- important information about sentence structure and semantics.
- </p>
- </div>
 
 </div>
 

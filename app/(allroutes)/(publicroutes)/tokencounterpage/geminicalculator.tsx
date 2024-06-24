@@ -12,12 +12,16 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import ContextExplanation from "@/components/contextexplanation";
+import { contextWindowHeader } from "@/components/contextdefinitions";
+import { contextWindowText } from "@/components/contextdefinitions";
 
 
 export interface OpenaiCalculatorProps {
     tokens: number;
     onReset: ()=>void;
 }
+
 
 
 
@@ -173,7 +177,10 @@ const GeminiCalculator = ({tokens, onReset}: OpenaiCalculatorProps) =>{
     <p className="text-sm">Assuming input tokens and output tokens are thesame.</p>
     <p className="text-red-500">Model Input Price: ${modelInputPriceExplanation}</p>
     <p className="text-red-500">Model Output Price: ${modelOutputPriceExplanation}</p>
-    <p>Context Window: {contextWindow}</p>
+    <div className="flex justify-center gap-1">
+      <p>Context Window: {contextWindow}</p>
+      <ContextExplanation header={contextWindowHeader} text={contextWindowText} />
+    </div>
     <p>Training Data: {trainingData}</p>
     <p>Request Per Minute(RPM): {rpm}</p>
     <p>Prompt is used for model re-training: {retraining}</p>
