@@ -6,9 +6,14 @@ import { Textarea } from '@/components/ui/textarea'
 import HomeNavBar from '@/components/homenavbar'
 import Footer from '@/components/footer'
 import { Button } from '@/components/ui/button'
+import OpenaiCalculator from './openaicalculator'
+import { OpenaiCalculatorProps } from './openaicalculator'
+import GeminiCalculator from './geminicalculator'
+import WordGenerator from '@/components/wordgenerator'
 
 
 const TokenCounterPage = () => {
+
   const [text, setText] = useState<string>('')
   const [tokens, setTokens] = useState<number>(0)
 
@@ -27,38 +32,42 @@ const TokenCounterPage = () => {
     handleTokenCounter()
   }, [text])
 
+  const handleReset = ()=>{
+    setTokens(0)
+    setText('')
+  }
+
 
   return (
     <div>
-    <HomeNavBar />
+
     <div className='p-4'>
         <h1 className='py-8 text-center text-3xl'>Token Counter</h1>
         <div className='flex flex-col justify-center items-center gap-3'>
         <p className='font-extrabold text-2xl text-blue-500'>Text Area</p>
         <Textarea value={text} onChange={(e)=>setText(e.target.value)} 
         placeholder='Type or paste text here'
-        className='h-32 w-1/2 text-md p-0 m-0'  />
+        className='h-32 md:w-1/2 text-md p-0 m-0'   />
 
-        <div>
+        <div className='flex gap-3'>
         <Button 
         className='bg-blue-500 rounded-2xl text-white hover:bg-blue-500' 
-        onClick={()=>setText('')}>Reset</Button>
+        onClick={handleReset}>Reset</Button>
+
+        <WordGenerator />
         </div>
         
-        <p className='font-extrabold text-2xl text-red-500'>Tokens</p>
+        <p className='font-extrabold text-2xl text-red-500'>Tokens<span> (input)</span></p>
         <p className='font-extrabold text-2xl'>{tokens}</p>
         
-        {/* API Costing */}
-        <div className='text-center flex gap-3'>
+        {/* OpenAI Costing */}
+        <div className='text-center flex md:flex-row flex-col gap-16 md:gap-32'>
         <div>
-         <p className='font-semibold'>COST USING 
-         <span className='font-extrabold'> OPENAI</span></p>
-         <p>${0}</p>
+         <OpenaiCalculator tokens={tokens} onReset={handleReset} />
          </div>
+          {/* Gemini Costing */}
          <div>
-         <p className='font-semibold'>COST USING  
-         <span className='font-extrabold'> GEMINI FLASH 1.5</span></p>
-         <p>${0}</p>
+          <GeminiCalculator tokens={tokens} onReset={handleReset} />
          </div>
         </div>
         </div>
@@ -96,7 +105,7 @@ text on whitespace or other delimiters.</p>
 
 </div>
 
-<Footer />
+
 </div>
   )
 }

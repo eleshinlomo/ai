@@ -47,7 +47,7 @@ const HomeNavBar = ()=>{
 
 <div className='flex'>
 <div className='md:flex  w-full flex-1'>
-        <Link href='https://myafros.com'>
+        <Link href='/'>
           <div className='relative w-16 h-12 my-2'>
         <HomeIcon className='h-8 w-8' />
         </div>
@@ -105,6 +105,10 @@ const HomeNavBar = ()=>{
         <OtherHomeNavButtons />
       </MenubarItem>
     </MenubarContent>
+  </MenubarMenu>
+
+  <MenubarMenu>
+    <MenubarTrigger><Link href='/imagecosting'>Compare Image Models</Link></MenubarTrigger>
   </MenubarMenu>
 
   <MenubarMenu>
