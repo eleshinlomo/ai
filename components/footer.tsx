@@ -1,8 +1,9 @@
 
 
-import WaitlistPage from '@/app/(allroutes)/(publicroutes)/waitlistpage/page'
+
 import Logo from './logo'
 import Link from 'next/link'
+import NewsLetterButton from './newsletter/newsletterbtn'
 
 
 const Footer = ()=>{
@@ -11,8 +12,7 @@ const Footer = ()=>{
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Top area: Blocks */}
-        <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t
-         border-gray-200">
+        <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12">
 
           {/* 1st block */}
           <div className="sm:col-span-12 lg:col-span-3">
@@ -105,17 +105,17 @@ const Footer = ()=>{
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-            <h6 className="text-gray-800 font-medium mb-2">Subscribe</h6>
+            <h6 className="text-gray-800 font-medium mb-2">Newsletter</h6>
             <p className="text-sm text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
             
-                <WaitlistPage />
+                <NewsLetterButton />
           </div>
           
 
         </div>
 
         {/* Bottom area */}
-        <div className="md:flex md:items-center md:justify-between py-4 md:py-8 border-t border-gray-200">
+        <div className="md:flex md:items-center md:justify-between py-4 md:py-8">
 
           {/* Social as */}
           <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">

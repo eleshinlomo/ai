@@ -7,14 +7,14 @@ interface RootLayotProps {
 }
 
 export const metadata = {
-    title: 'GenAI Page',
+    title: 'MAFROS AI',
     description: 'MyAfros',
   }
 
 const RootLayout = ({children}: RootLayotProps) => {
   return (
     <html lang='en'>
-    <body>{children}</body>
+    <body className={`bg-[#FCFCFC] dark:bg-black`}>{children}</body>
     </html>
   )
 }

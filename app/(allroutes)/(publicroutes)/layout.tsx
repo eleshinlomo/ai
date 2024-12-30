@@ -1,5 +1,4 @@
 import Footer from "@/components/footer"
-import HomeNavBar from "@/components/homenavbar"
 
 
 interface PublicLayoutProps {
@@ -13,9 +12,7 @@ const PublicRoutesLayout = ({children}: PublicLayoutProps)=>{
 
     return (
         <div>
-        <HomeNavBar />
          {children}
-         <Footer />
         </div>
     )
 }

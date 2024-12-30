@@ -1,6 +1,7 @@
 
 import React from 'react'
 
+
 interface ProtectedRoutesProps {
     children: React.ReactNode
 }
