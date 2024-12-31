@@ -46,8 +46,8 @@ const SigninPage = () => {
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
-              <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
-                <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
+              <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-5 dark:bg-dark sm:p-[60px]">
+                <h3 className="mt-16 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
                   Sign in
                 </h3>
 
@@ -118,7 +118,7 @@ const SigninPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div> */}
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleLogin} className="text-green-500">
                   
                   <div className="mb-8">
                     <label className="mb-3 block text-sm text-dark dark:text-white">
@@ -192,6 +192,7 @@ const SigninPage = () => {
                     className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center
                      rounded-sm bg-green-700 px-9 py-4 text-base font-medium text-white duration-300 hover:bg-green-700">
                       {btnText}
+                      Sign in
                     </button>
                   </div>
                 </form>
