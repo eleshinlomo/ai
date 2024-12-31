@@ -1,11 +1,12 @@
-import PageUnderConstruction from "@/components/underconstruction/page"
+import ConstructionPage from "@/app/(allroutes)/(publicroutes)/underconstruction/page"
+
 
 const ImageToTextPage = ()=>{
 
   return (
 
     <div>
-      <PageUnderConstruction />
+      <ConstructionPage /> 
     </div>
     
   )

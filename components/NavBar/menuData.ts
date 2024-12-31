@@ -13,7 +13,7 @@ export const menuData: Menu[] = [
   {
     id: 3,
     title: "Camsecure",
-    path: "/about",
+    path: "/underconstruction",
     newTab: false,
   },
  
