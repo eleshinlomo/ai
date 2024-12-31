@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
-import {RecordMessage} from "@/components/(audiotospeech)/RecordMessage";
+import dynamic from "next/dynamic";
+const RecordMessage = dynamic(()=> import("@/components/(audiotospeech)/RecordMessage"), {ssr: false}) ;
 import Link from 'next/link'
 
 
@@ -15,14 +16,17 @@ const VoiceChatPage = () => {
   // console.log(url)
 
  const getUserRecordedMessage = (mediaBlobUrl: any) =>{
+  if(typeof window !=='undefined'){
   if(mediaBlobUrl === '') return
   const myMessage = { sender: "you", mediaBlobUrl };
   return myMessage
+  }
 
  }
+
   const handleStop = async (mediaBlobUrl: any) => {
     setIsLoading(true);
-  
+    if(typeof window !=='undefined'){
     // Append recorded message to messages
     const userRecordedMessage = getUserRecordedMessage(mediaBlobUrl)
     const messagesArr = [...messages, userRecordedMessage];
@@ -70,6 +74,7 @@ const VoiceChatPage = () => {
       console.error(error);
       setIsLoading(false);
     };
+  }
   };
   
   

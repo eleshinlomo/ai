@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
-import {RecordMessage} from "@/components/(voicerecorder)/RecordMessage";
+import dynamic from "next/dynamic";
+const RecordMessage = dynamic(()=>import("@/components/(voicerecorder)/RecordMessage"), {ssr: false});
 import Link from 'next/link'
 import { SmileIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,7 @@ const transcribing = (<div className='relative h-6 w-6'>
 
 //  Handle Start and Stop
   const handleStop = async (mediaBlobUrl: any) => {
-    if(mediaBlobUrl === '') return
+    if(typeof window !=='undefined'){
     setIsLoading(true);
     console.log(mediaBlobUrl);
 
@@ -50,6 +51,7 @@ const transcribing = (<div className='relative h-6 w-6'>
       const response = await fetch(mediaBlobUrl);
       const blob = await response.blob();
       setUserMessage(blob)
+    }
   
   
   };
