@@ -3,13 +3,16 @@
 
 import Logo from './logo'
 import Link from 'next/link'
-import NewsLetterButton from './newsletter/newsletterbtn'
+import NewsletterButton from '@/components/newsletter/newsletterbtn'
+
+// URLS
+
 
 
 const Footer = ()=>{
   return (
     <footer>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 hover:text-white">
 
         {/* Top area: Blocks */}
         <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12">
@@ -19,85 +22,85 @@ const Footer = ()=>{
             <div className="mb-2">
               <Logo />
             </div>
-            <div className="text-sm text-gray-600">
-              <a href="terms" className="text-gray-600 hover:text-gray-900 
+            <div className="text-sm text-white">
+              <a href="terms" className=" hover:text-white/80
               hover:underline transition duration-150 ease-in-out">Terms</a> · 
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-900 
+              <Link href="/privacy" className=" hover:text-white/80
               hover:underline transition duration-150 ease-in-out">Privacy Policy</Link>
             </div>
           </div>
 
           {/* 2nd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-gray-800 font-medium mb-2">Projects</h6>
+            <h6 className="text-white font-medium mb-2">Projects</h6>
             <ul className="text-sm">
             <li className="mb-2">
-                <Link href="https://myafros.com" className="text-gray-600 hover:text-gray-900 
+                <Link href="https://myafros.com" className="text-gray-600 hover:text-white 
                 transition duration-150 ease-in-out">My Afros</Link>
               </li>
               <li className="mb-2">
-                <Link href="https://crm.myafros.com/" className="text-gray-600 hover:text-gray-900 
+                <Link href="/" className="text-gray-600 hover:text-white 
                 transition duration-150 ease-in-out">CRM</Link>
               </li>
               
               <li className="mb-2">
-                <a href="https://imgbot.myafros.com/" className="text-gray-600 hover:text-gray-900 
+                <a href={`/genai/image/texttoimgpage`} className="text-gray-600 hover:text-white
                 transition duration-150 ease-in-out">Image Generator</a>
               </li>
               <li className="mb-2">
-                <a href="https://crm.myafros.com/dashboard/genai/voicerecorder" className="text-gray-600 hover:text-gray-900 
+                <a href={`/voicerecorder`} className="text-gray-600 hover:text-white 
                 transition duration-150 ease-in-out">Voice Recorder</a>
               </li>
               <li className="mb-2">
-                <a href="https://crm.myafros.com/dashboard/genai/contentwriter" className="text-gray-600 hover:text-gray-900 
-                transition duration-150 ease-in-out">Content Writer</a>
+                <a href={`/genai/aitranscriber`} className="text-gray-600 hover:text-white
+                transition duration-150 ease-in-out">Transcriber</a>
               </li>
             </ul>
           </div>
 
           {/* 3rd block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-gray-800 font-medium mb-2">Resources</h6>
+            <h6 className="text-white font-medium mb-2">Resources</h6>
             <ul className="text-sm">
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 
+                <a href="#0" className="text-gray-600 hover:text-white
                 transition duration-150 ease-in-out">Documentation</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Tutorials & Guides</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Tutorials & Guides</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Blog</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Blog</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Support Center</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Support Center</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Partners</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Partners</a>
               </li>
             </ul>
           </div>
 
           {/* 4th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h6 className="text-gray-800 font-medium mb-2">Company</h6>
+            <h6 className="text-white font-medium mb-2">Company</h6>
             <ul className="text-sm">
-            <Link href="/" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+            <Link href="/" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">
               <li className="mb-2">
                 Home
               </li>
               </Link>
               <li className="mb-2">
-                <a href="/aboutpage" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">About us</a>
+                <a href="/aboutpage" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">About us</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Company values</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Company values</a>
               </li>
               <li className="mb-2">
-                <a href="#0" className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
+                <a href="#0" className="text-gray-600 hover:text-white transition duration-150 ease-in-out">Pricing</a>
               </li>
               <li className="mb-2">
-                <Link href="/privacy" className="text-gray-600 hover:text-gray-900 
+                <Link href="/privacy" className="text-gray-600 hover:text-white
                 transition duration-150 ease-in-out">Privacy Policy</Link>
               </li>
             </ul>
@@ -105,10 +108,10 @@ const Footer = ()=>{
 
           {/* 5th block */}
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-3">
-            <h6 className="text-gray-800 font-medium mb-2">Newsletter</h6>
-            <p className="text-sm text-gray-600 mb-4">Get the latest news and articles to your inbox every month.</p>
+            <h6 className="text-white font-medium mb-2">Newsletter</h6>
+            <p className="text-sm text-white/80 mb-4">Get the latest news and articles to your inbox every month.</p>
             
-                <NewsLetterButton />
+                <NewsletterButton />
           </div>
           
 
@@ -148,7 +151,7 @@ const Footer = ()=>{
 
           {/* Copyrights note */}
           <div className="text-sm text-gray-600 mr-4">
-            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2024.</div>
+            &copy; <a href='https://myafros.com'>myafros.com</a>. All rights reserved 2025.</div>
 
         </div>
 

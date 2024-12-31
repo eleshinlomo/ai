@@ -23,12 +23,12 @@ const Hero = () => {
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center items-center">
             <div className="w-full px-4">
-              <div className="mx-auto max-w-[700px] text-center">
+              <div className="mx-auto max-w-[700px] text-center pt-12">
                 <h1 className="py-5 text-3xl font-bold leading-tight text-white dark:text-green-400 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  VALIDATE AND LAUNCH PRODUCT FASTER.
+                  GET UPDATED WITH AI OR
                 </h1>
                 <p className="text-center mx-0 mb-12  text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Get your own landing page in a minute and begin to validate your ideas with the world.
+                GET OUTDATED.
                 </p>
                 
                  <GetStartedButton />

@@ -34,10 +34,11 @@ const VoiceToTextPage = () => {
       <div className=" text-center flex flex-col justify-center items-center
         text-2xl gap-4 px-4 py-8 bg-white text-black">
           
-           <p className='py-4 font-extrabold font-sans text-2xl'>TRANSCRIBER</p>
+          <div className='pt-16 max-w-md'> <p className='py-4 font-extrabold font-sans text-2xl'>TRANSCRIBER</p>
           <p className='py-8 font-extrabold text-sm'>File uploads are currently limited to 
           25 MB and the following input file types are supported: 
           mp3, mp4, mpeg, mpga, m4a, wav, and webm.</p>
+          </div>
           
           
           <form onSubmit={handleTranscription} className='flex flex-col 
