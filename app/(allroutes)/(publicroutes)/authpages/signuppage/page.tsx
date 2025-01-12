@@ -16,7 +16,7 @@ const SignupPage = () => {
   const [repassword, setRepassword] = useState('')
   const [heading, setHeading] = useState('Create your account')
   const [usersource, setUsersource] = useState('landingpage app')
-  const [message, setMessage] = useState('Fastrack your product launch by validating your idea.')
+  const [message, setMessage] = useState('Power your dreams with AI.')
   const [error, setError] = useState('')
   const [btnMsg, setBtnMsg] = useState('Sign up')
   const [notRegistered, setNotRegistered] = useState(true)
@@ -62,7 +62,7 @@ const SignupPage = () => {
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-16 lg:pt-[180px]">
+      <section className="relative text-black z-10 overflow-hidden pb-16 pt-36 md:pb-16 lg:pt-[180px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">

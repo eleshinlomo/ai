@@ -3,6 +3,7 @@ import Link from "next/link";
 import {useState, useEffect, useContext, ChangeEvent, FormEvent} from 'react'
 import { Metadata } from "next";
 import { AuthContext } from "@/app/providers/authprovider";
+import { PayloadProps, resetPassowrd } from "@/components/auth";
 
 
 // export const metadata: Metadata = {
@@ -14,41 +15,46 @@ import { AuthContext } from "@/app/providers/authprovider";
 const SigninPage = () => {
 
   const authContext = useContext(AuthContext)
+  const [error, setError] = useState<string>('')
+  const [message, setMessage] = useState<string>('Enter your email and you will recieve a link if your email exists in our database.')
+  const [email, setEmail] = useState<string>('')
   const [btnText, setBtnText] = useState('Reset password')
 
-  // We are getting all these values from the generalContext Provider
-  const {
-    
-    email, 
-    password, 
-    message, 
-    error,
-    login, 
-    setEmail, 
-    setPassword,
-    
-  } = authContext
+
+  const handleResetPassword = (e: FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+   
+    const response: any = resetPassowrd(email)
+    if(response.ok){
+      return response.message
+    }else{
+      console.log('Error with password reset')
+      setMessage('')
+      setError('Error with password reset')
+      return 
+    }
+  }
 
 
 
  
   return (
     <>
-      <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+      <section className="relative text-black z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Password Reset For Admins Only
+                  Password Reset
                 </h3>
-
+                 
                 {error ?
                 <p className="mb-11 text-center text-base font-medium text-red-600">
                   {error}
                 </p> :
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                {/* {passResetMessage} */}
+                {message} 
                  </p>
                 }
 
@@ -110,7 +116,7 @@ const SigninPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div> */}
-                <form onSubmit={login}>
+                <form onSubmit={handleResetPassword}>
                   <div className="mb-8">
                     <label
                       htmlFor="email"
@@ -124,6 +130,7 @@ const SigninPage = () => {
                       type="email"
                       name="email"
                       placeholder="Enter your Email"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
@@ -138,7 +145,7 @@ const SigninPage = () => {
                   </div>
                 </form>
                 <p className="text-center text-base font-medium text-body-color">
-                  Get your own product launch account{" "}
+                  Integrate AI into your workflow{" "}
                   <Link href="/authpages/signuppage" className="text-green-500 hover:underline">
                     Sign up
                   </Link>

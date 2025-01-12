@@ -2,6 +2,8 @@
 import Link from "next/link";
 import {useState, useEffect, useContext, ChangeEvent, FormEvent} from 'react'
 import { AuthContext } from "@/app/providers/authprovider";
+import { getCsrfTokenFromHeader, loginApi } from "@/components/auth";
+
 
 
 // export const metadata: Metadata = {
@@ -13,24 +15,60 @@ import { AuthContext } from "@/app/providers/authprovider";
 const SigninPage = () => {
 
   const authContext = useContext(AuthContext)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
+  const [error, setError] = useState<string>('')
+  const [btnText, setBtnText] = useState('Sign in')
+  const [loginInitiated, setLoginInitiated] = useState(false)
+  
 
   // We are getting all these values from the generalContext Provider
   const {
     isLoggedIn,
-    email, 
-    password, 
-    message, 
-    btnText,
-    error,
-    login, 
-    setEmail, 
-    setPassword,
+    setIsLoggedIn,
+    handleLoginChecker
+    
   } = authContext
 
  
   const handleLogin = (e: FormEvent<HTMLFormElement>)=>{
-   e.preventDefault()
-     login(e)
+    e.preventDefault()
+     const payload = {
+      email,
+      password
+     }
+     const response: any = loginApi({payload})
+     if (response.ok){
+           setBtnText('Waiting for login checker')
+            setMessage('Waiting for login checker')
+            setPassword('')
+            setEmail('')
+            setError('')
+            setLoginInitiated(true)
+            localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
+            const authStatus = localStorage.getItem('isLoggedIn')
+            if(authStatus === ''){
+              setIsLoggedIn(JSON.parse(authStatus))
+            }
+            
+            // Referesh the csrftoken in the localStorage with the new one
+            getCsrfTokenFromHeader()
+            // Referesh the loginchecker with the new csrftoken 
+            handleLoginChecker()
+            
+            // router.push('/dashboard/dashboardpage')
+      
+            
+            
+          }else{
+        
+            setError(response.error)
+            console.error(response.error)
+            setBtnText('Sign in')
+            return
+        
+          }
   }
 
 
@@ -42,7 +80,7 @@ const SigninPage = () => {
   return (
     <>
 
-      <section className="relative z-10 overflow-hidden pb-16 mt-24 md:pb-20 lg:pb-28">
+      <section className="relative text-black z-10 overflow-hidden pb-16 mt-24 md:pb-20 lg:pb-28">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -130,6 +168,7 @@ const SigninPage = () => {
                       type="email"
                       name="email"
                       placeholder="Enter your Email"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
@@ -143,6 +182,7 @@ const SigninPage = () => {
                       type="password"
                       name="password"
                       placeholder="Enter your Password"
+                      required
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>

@@ -11,7 +11,7 @@ interface PassMatchProps {
   repassword: string;
 }
 
-interface PayloadProps {
+export interface PayloadProps {
   payload: object;
 }
 
@@ -71,8 +71,10 @@ export const fetchCsrfTokenFromServer = async () => {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch CSRF token');
-  }
+    console.log('csrf token not found')
+    return {error: 'csrf token not found'}
+  };
+  
 
   const csrfToken = await response.json()
   localStorage.setItem('csrftoken', csrfToken.csrftoken)
@@ -175,6 +177,10 @@ export const logoutApi = async ()=>{
     window.location.href = '/authpages/logoutlandingpage'
     return
    
+ }
+
+ export const resetPassowrd = (email: string)=>{
+    return {message: 'Checking email'}
  }
  
  

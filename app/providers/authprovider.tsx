@@ -9,12 +9,12 @@ interface AuthContextProps {
 const initialValues = {
   user: null,
   isLoggedIn: false,
+  setIsLoggedIn: (value: boolean)=>{},
   message: '',
   email: '',
   password: '',
   btnText: '',
   error: '',
-  login: (e: FormEvent<HTMLFormElement>)=>{},
   handleLoginChecker: ()=>{},
   setEmail: (value: string)=>{},
   setPassword: (value: string)=>{},
@@ -37,53 +37,53 @@ export const AuthProvider = ({children}: AuthContextProps)=>{
  const router = useRouter()
  
 
-  const login = async (e: FormEvent<HTMLFormElement>)=>{
-    e.preventDefault()
-    try{
-    setError('')
-    setMessage('Signing in...')
-    setBtnText('Signing in...')
-    const payload = {
-      email,
-      password
-    }
-     const response = await loginApi({payload})
-     if(response.ok){
-      setBtnText('Waiting for login checker')
-      setMessage('Waiting for login checker')
-      setPassword('')
-      setEmail('')
-      setError('')
-      setLoginInitiated(true)
-      localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
-      const authStatus = localStorage.getItem('isLoggedIn')
-      if(authStatus === ''){
-        setIsLoggedIn(JSON.parse(authStatus))
-      }
+  // const login = async (e: FormEvent<HTMLFormElement>)=>{
+  //   e.preventDefault()
+  //   try{
+  //   setError('')
+  //   setMessage('Signing in...')
+  //   setBtnText('Signing in...')
+  //   const payload = {
+  //     email,
+  //     password
+  //   }
+  //    const response = await loginApi({payload})
+  //    if(response.ok){
+  //     setBtnText('Waiting for login checker')
+  //     setMessage('Waiting for login checker')
+  //     setPassword('')
+  //     setEmail('')
+  //     setError('')
+  //     setLoginInitiated(true)
+  //     localStorage.setItem('isLoggedIn', JSON.stringify(response.message.isLoggedIn))
+  //     const authStatus = localStorage.getItem('isLoggedIn')
+  //     if(authStatus === ''){
+  //       setIsLoggedIn(JSON.parse(authStatus))
+  //     }
       
-      // Referesh the csrftoken in the localStorage with the new one
-      getCsrfTokenFromHeader()
-      // Referesh the loginchecker with the new csrftoken 
-      handleLoginChecker()
+  //     // Referesh the csrftoken in the localStorage with the new one
+  //     getCsrfTokenFromHeader()
+  //     // Referesh the loginchecker with the new csrftoken 
+  //     handleLoginChecker()
       
-      // router.push('/dashboard/dashboardpage')
+  //     // router.push('/dashboard/dashboardpage')
 
       
       
-    }else{
+  //   }else{
   
-      setError(response.error)
-      console.error(response.error)
-      setBtnText('Sign in')
-      return
+  //     setError(response.error)
+  //     console.error(response.error)
+  //     setBtnText('Sign in')
+  //     return
   
-    }
-  }catch(err){
-    setMessage('Error with api call. Check console.')
-    setBtnText('Sign in')
-    console.log(error)
-  }
-  }
+  //   }
+  // }catch(err){
+  //   setMessage('Error with api call. Check console.')
+  //   setBtnText('Sign in')
+  //   console.log(error)
+  // }
+  // }
 
 
 
@@ -132,11 +132,11 @@ export const AuthProvider = ({children}: AuthContextProps)=>{
   const values = {
     user,
     isLoggedIn,
+    setIsLoggedIn,
     message,
     email,
     password,
     btnText,
-    login,
     handleLoginChecker,
     error,
     setEmail,
