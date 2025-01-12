@@ -38,6 +38,7 @@ const SigninPage = () => {
       email,
       password
      }
+     setBtnText('Sigining in...')
      const response: any = loginApi({payload})
      if (response.ok){
            setBtnText('Waiting for login checker')
@@ -232,7 +233,6 @@ const SigninPage = () => {
                     className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center
                      rounded-sm bg-green-700 px-9 py-4 text-base font-medium text-white duration-300 hover:bg-green-700">
                       {btnText}
-                      Sign in
                     </button>
                   </div>
                 </form>

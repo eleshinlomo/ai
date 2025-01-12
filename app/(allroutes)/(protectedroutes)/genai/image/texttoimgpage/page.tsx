@@ -67,7 +67,7 @@ const ImagePage = () => {
           const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
           const sessionid: any = localStorage.getItem('sessionid')
           if(!sessionid){
-          setMessage('No session id found')
+          setMessage('Please Sign in')
           return
           }
           const res: any = await fetch(`${BASE_URL}/imagegenerator/`, {
