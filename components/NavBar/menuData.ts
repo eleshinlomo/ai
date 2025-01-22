@@ -13,7 +13,7 @@ export const menuData: Menu[] = [
   {
     id: 3,
     title: "Camsecure",
-    path: "/underconstruction",
+    path: "https://camsecure.vercel.app/",
     newTab: false,
   },
  
