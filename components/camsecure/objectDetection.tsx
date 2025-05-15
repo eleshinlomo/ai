@@ -1,8 +1,4 @@
 "use client";
-import '@tensorflow/tfjs-backend-webgl';
-
-// or use this if you prefer CPU backend
-// import '@tensorflow/tfjs-backend-cpu';
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Webcam from "react-webcam";
@@ -36,7 +32,7 @@ const ObjectDetection = () => {
     setMessage('Loading model...');
     try {
       const tf = await import('@tensorflow/tfjs');
-      await import('@tensorflow/tfjs-backend-cpu'); // or webgl
+      await import('@tensorflow/tfjs-backend-webgl'); 
       await tf.ready();
   
       const cocoSsd = await import('@tensorflow-models/coco-ssd');
