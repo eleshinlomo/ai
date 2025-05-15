@@ -12,7 +12,7 @@ export const menuData: Menu[] = [
 
   {
     id: 3,
-    title: "Camsecure",
+    title: "Object Detector",
     path: "/camsecurepage",
     newTab: false,
   },

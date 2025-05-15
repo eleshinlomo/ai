@@ -1,5 +1,6 @@
 "use client";
 import '@tensorflow/tfjs-backend-webgl';
+
 // or use this if you prefer CPU backend
 // import '@tensorflow/tfjs-backend-cpu';
 
@@ -34,8 +35,12 @@ const ObjectDetection = () => {
   const loadModel = useCallback(async () => {
     setMessage('Loading model...');
     try {
-      await tf.ready(); // <-- Ensure backend is ready
-      const loadedModel = await cocoSSDLoad();
+      const tf = await import('@tensorflow/tfjs');
+      await import('@tensorflow/tfjs-backend-cpu'); // or webgl
+      await tf.ready();
+  
+      const cocoSsd = await import('@tensorflow-models/coco-ssd');
+      const loadedModel = await cocoSsd.load();
       console.log('Loaded model:', loadedModel);
       return loadedModel;
     } catch (error) {
@@ -44,6 +49,7 @@ const ObjectDetection = () => {
       return null;
     }
   }, []);
+  
   
 
   // Start camera with model
@@ -85,24 +91,24 @@ const ObjectDetection = () => {
   // Run predictions
   const runPredictions = useCallback(async () => {
     if (!model || !cameraStarted || !webcamRef.current?.video) return;
-
+  
     try {
       const predictions = await model.detect(webcamRef.current.video);
-
+  
       if (
         predictions.length !== predictionArray.length ||
         JSON.stringify(predictions) !== JSON.stringify(predictionArray)
       ) {
         setPredictionArray(predictions);
       }
-
+  
       const canvas = canvasRef.current;
       const context = canvas?.getContext("2d");
       if (context && canvas) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         renderPredictions(predictions, canvas);
       }
-
+  
       if (predictions.length > 0) {
         const detectedObject = predictions[0].class;
         setPrediction(detectedObject);
@@ -118,19 +124,11 @@ const ObjectDetection = () => {
     } catch (error) {
       console.error('Prediction error:', error);
     }
-
-    animationRef.current = requestAnimationFrame(runPredictions);
+  
+    // Run again in 100ms (10 FPS)
+    animationRef.current = window.setTimeout(runPredictions, 100);
   }, [model, cameraStarted, predictionArray]);
-
-  // Auto-start prediction loop
-  useEffect(() => {
-    if (cameraStarted) {
-      animationRef.current = requestAnimationFrame(runPredictions);
-      return () => {
-        if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      };
-    }
-  }, [cameraStarted, runPredictions]);
+  
 
   // Start camera layout sizing
   useEffect(() => {
